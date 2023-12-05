@@ -21,6 +21,14 @@
                                     <input type="text" name="reviewed_ride" value="{{ item }}" readonly>
                                 {% elif field.name == 'reviewer_username' %}
                                     <input type="text" name="reviewer_username" value="{{ user.username }}" readonly>
+                                {% elif field.name == 'rating' %}
+                                    <select id="rating" name="rating">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
                                 {% else %}
                                     {{ field }}
                                 {% endif %}

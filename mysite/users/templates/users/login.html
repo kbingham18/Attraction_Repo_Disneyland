@@ -2,9 +2,12 @@
 {% block body %}
 <form method="POST">
     {%  csrf_token %}
-    <div style="padding: 20px; margin: auto; border: solid lightgoldenrodyellow 10px; width: 600px; " >
+    <div class="loginDiv" >
         {{ form }}
-        <button type="submit">Login</button>
+        <div class="centerDiv">
+            <br>
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
     </div>
 </form>
 {% endblock %}

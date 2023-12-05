@@ -11,7 +11,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def ride_list(request):
-    ride_object = Rides.objects.all()
+    ride_object = Rides.objects.all().order_by('ride_name')
     ride_name = request.GET.get('ride_name')
     ride_location = request.GET.get('ride_location')
     if ride_name != '' and ride_name is not None:

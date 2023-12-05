@@ -4,22 +4,19 @@
     <div class="container">
     <br>
 
-{#            <div classcd="col-md-6">#}
-            <div style="text-align: center">
+            <div class="centerDiv">
                 <img src="{{  ride.ride_image.url }}" class="frameInd"/>
             </div>
         <br>
         <br>
-{#            </div>#}
-            <div style="text-align: center" >
-{#            <div class="col-md-6" style="text-align: center">#}
-                <h1 style="text-decoration: underline"><b>{{ ride.ride_name }}</b></h1>
+            <div class="centerDiv" >
+                <h1 class="rideNameDetail"><b>{{ ride.ride_name }}</b></h1>
 
-                <h3 style="width: 65%; margin: auto; color: black">{{ ride.ride_desc }}</h3>
+                <h3 class="rideInfoDetail">{{ ride.ride_desc }}</h3>
                 <br>
-                <h4>Height Limit: {{ ride.height_limit }}</h4>
-                <h4>Location: {{ ride.ride_location }}</h4>
-                <h4>Average Wait Time: {{ ride.ride_wait }}</h4>
+                <h4 class="rideDetail">Height Limit: {{ ride.height_limit }}</h4>
+                <h4 class="rideDetail">Location: {{ ride.ride_location }}</h4>
+                <h4 class="rideDetail">Average Wait Time: {{ ride.ride_wait }}</h4>
                 {% if request.user.is_superuser %}
                     <a href="{% url 'repository:delete_ride' ride.id %}" class="btn btn-danger">Delete</a>
                 {% endif %}
@@ -27,23 +24,27 @@
         <div>
         <br>
         <br>
+        <br>
         {% if user.is_authenticated %}
-        <a href="{% url 'repository:create_review' ride.id %}" class="btn btn-primary" style="float: right">Add Review</a>
+        <a href="{% url 'repository:create_review' ride.id %}" class="btn btn-info" style="float: right">Add Review</a>
         {% endif %}
-            <h2 style="text-decoration: underline; color: grey">Reviews</h2>
-            <div style="padding: 10px; height: 300px; overflow: auto">
+            <h3>Reviews</h3>
+            <div class="reviewStartDiv">
                 {%  for review in reviews %}
-                    <div style="flex-grow: 1; border-bottom: 1px dotted lightskyblue; margin: 5px;">
+                    <div class="reviewLine">
                     {% if request.user.is_superuser %}
                         <a href="{% url 'repository:delete_review' review.id %}" class="btn btn-danger btn-sm" style="float: right">Delete Review</a>
                     {% endif %}
                         <h5><b>{{ review.reviewer_username }}</b></h5>
                         <h5>{{ review.review }}</h5>
-                        <h6>Rating: {{ review.rating }}</h6>
+                    {% if review.rating == 1 %}
+                        <h6>Rating: {{ review.rating }} star</h6>
+                    {% else %}
+                         <h6>Rating: {{ review.rating }} stars</h6>
+                    {% endif %}
                     </div>
                 {% endfor %}
             </div>
         </div>
-{#        </div>#}
     </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 body{
-    background-color: lightblue;
+    background-color: aliceblue;
 }
 
 .frame{
@@ -7,8 +7,22 @@ body{
     height: 250px;
     width: 350px;
 }
+
+.divShadow{
+    box-shadow: 2px 2px 5px whitesmoke;
+}
+
+.rideImg{
+    height: 250px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px lightgrey;
+}
+
 .frameInd{
-    border: 15px groove goldenrod;
+    /*border: 15px groove goldenrod;*/
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px lightgrey;
     height: 350px;
     width: 450px;
 }
@@ -17,6 +31,7 @@ body{
     text-align: center;
     font-size: 60px;
     font-family: "clicker Script", serif;
+
 }
 
 .searchButton{
@@ -32,4 +47,82 @@ body{
 
 .rideLabel{
     font-size: 32px;
+    color: cornflowerblue;
+}
+
+.rideInfo{
+    color: darkslategray;
+}
+
+.profileImg{
+    width: 250px;
+    border-radius: 50%;
+}
+
+.pageCont{
+    font-size: 20px;
+}
+
+.pageNum{
+    font-size: 20px;
+}
+
+.loginDiv{
+    padding: 20px;
+    margin: auto;
+    margin-top: 30px;
+    /*border: solid lightgoldenrodyellow 10px; */
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px grey;
+    background-color: whitesmoke;
+
+}
+
+.centerDiv{
+    text-align: center;
+}
+
+.rideNameDetail{
+    color: royalblue;
+}
+
+.rideInfoDetail{
+    width: 65%;
+    margin: auto;
+    color: darkslategray;
+}
+.rideDetail{
+    color: darkslategray;
+}
+
+.rideReview{
+    color: navy;
+}
+
+.reviewStartDiv{
+    padding: 10px;
+    height: 300px;
+    overflow: auto;
+    border-top: 1px solid lightgrey;
+}
+
+.reviewLine{
+    flex-grow: 1;
+    border-bottom: 1px dotted lightskyblue;
+    margin: 5px;
+}
+
+.profileDiv{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.registerDiv{
+    padding: 20px;
+    margin: auto;
+    width: 900px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px grey;
+    background-color: whitesmoke;
 }
