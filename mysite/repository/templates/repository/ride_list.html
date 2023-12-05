@@ -1,0 +1,69 @@
+{%  extends 'repository/header.html' %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+<br>
+<form action="" method="GET">
+    <input type="search" name="ride_name">
+    <button type="submit" class="btn btn-light">Search Ride Name</button>
+</form>
+<br>
+<form action="" method="GET">
+    <input type="search" name="ride_location">
+    <button type="submit" class="btn btn-light" >Search Location</button>
+</form>
+    {% if request.user.is_superuser %}
+    <div>
+        <a href="{% url 'repository:create_ride'%}" class="btn btn-primary" style="float: right">Add</a>
+    </div>
+    {% endif %}
+    <h1 class="title"><b>Ride Catalog</b></h1>
+<br>
+{% for ride_item in ride_object %}
+<div class="row">
+
+    <div class="col-md-auto offset-md-2">
+        <img class="frame" src="{{ ride_item.ride_image.url }}"/>
+    </div>
+    <div class="col-md-4">
+        <h3 class="rideLabel">{{ ride_item.ride_name }}</h3>
+        <h5>Description: {{ ride_item.ride_desc }}</h5>
+        <h6>Height Limit: <em>{{ ride_item.height_limit }}</em></h6>
+        <h6>Location: <em>{{ ride_item.ride_location }}</em></h6>
+        <h6>Average Wait Time: <em>{{ ride_item.ride_wait }}</em></h6>
+    </div>
+<div class="col-sm-auto">
+    <a href="{% url 'repository:detail' ride_item.id %}" class="btn btn-info">Details</a>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'repository:update_ride' ride_item.id %}" class="btn btn-primary">Edit</a>
+    {% endif %}
+</div>
+
+</div>
+<br>
+{% endfor %}
+<div>
+{% if ride_object.has_previous %}
+    <a style="font-size: 20px" href="?page=1">First</a>
+    <a style="font-size: 20px" href="?page={{ ride_object.previous_page_number }}">Previous</a>
+{% endif %}
+
+    <a style="font-size: 20px">Page: {{ ride_object.number }} of {{ride_object.paginator.num_pages}}</a>
+
+{% if ride_object.has_next %}
+    <a style="font-size: 20px" href="?page={{ ride_object.next_page_number}}">Next</a>
+    <a style="font-size: 20px" href="?page={{ ride_object.paginator.num_pages }}">Last</a>
+{% endif %}
+</div>
+{% endblock %}
+</body>
+

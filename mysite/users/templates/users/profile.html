@@ -1,0 +1,9 @@
+{% extends 'repository/header.html' %}
+{% block body %}
+    <div style="text-align: center; padding-top: 20px;">
+        <img src="{{ user.profile.image.url }}" width="250px" style="border: 15px groove goldenrod">
+        <h1>{{ user.username }}</h1>
+        <h3>{{ user.email }}</h3>
+    </div>
+    <a href="{% url 'edit_profile'%}" class="btn btn-primary">Edit Profile</a>
+{% endblock %}

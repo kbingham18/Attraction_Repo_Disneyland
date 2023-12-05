@@ -1,0 +1,24 @@
+{% extends 'repository/header.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class ="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                    <div class="card-title">
+                        Delete Item
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <h2>Are you sure you want to delete {{ ride.ride_name }}</h2>
+                        <button type="submit">Confirm</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

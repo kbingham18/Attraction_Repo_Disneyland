@@ -1,0 +1,36 @@
+{% extends 'repository/header.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class ="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                    <div class="card-title">
+                        Edit Item
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                            {{ field.name }}
+                            <br>
+                                {% if field.name == 'reviewed_ride' %}
+                                    <input type="text" name="reviewed_ride" value="{{ item }}" readonly>
+                                {% elif field.name == 'reviewer_username' %}
+                                    <input type="text" name="reviewer_username" value="{{ user.username }}" readonly>
+                                {% else %}
+                                    {{ field }}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn-info">Save</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

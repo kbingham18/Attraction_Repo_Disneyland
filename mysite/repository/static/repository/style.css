@@ -1,0 +1,35 @@
+body{
+    background-color: lightblue;
+}
+
+.frame{
+    border: 15px groove goldenrod;
+    height: 250px;
+    width: 350px;
+}
+.frameInd{
+    border: 15px groove goldenrod;
+    height: 350px;
+    width: 450px;
+}
+
+.title{
+    text-align: center;
+    font-size: 60px;
+    font-family: "clicker Script", serif;
+}
+
+.searchButton{
+    background-color: cornflowerblue;
+    border: grey;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 8px;
+    width: 20%;
+    padding: 10px 15px;
+}
+
+.rideLabel{
+    font-size: 32px;
+}

@@ -1,0 +1,10 @@
+{% extends 'repository/header.html' %}
+{% block body %}
+<form method="POST">
+    {%  csrf_token %}
+    <div style="padding: 20px; margin: auto; border: solid lightgoldenrodyellow 10px; width: 600px; " >
+        {{ form }}
+        <button type="submit">Login</button>
+    </div>
+</form>
+{% endblock %}
