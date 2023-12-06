@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.shortcuts import render, redirect
+from statistics import mean
 
 from django.http import HttpResponse
 
@@ -27,9 +28,16 @@ def ride_list(request):
 def detail(request, ride_id):
     ride = Rides.objects.get(pk=ride_id)
     reviews = Review.objects.filter(reviewed_ride=ride.ride_name)
+    values = [obj.rating for obj in reviews]
+    if reviews.exists():
+        avgRating = mean(values)
+        avgRating = round(avgRating, 1)
+    else:
+        avgRating = 0
     context = {
         'ride': ride,
-        'reviews': reviews
+        'reviews': reviews,
+        'avgRate': avgRating
     }
     return render(request, 'repository/ride_detail.html', context)
 
@@ -71,6 +79,7 @@ def create_review(request, ride_id):
         return redirect('../%s' % ride_id)
 
     return render(request, 'repository/review-form.html', {'form': form, 'item': reviewed_ride1})
+
 
 def update_ride(request, ride_id):
     ride = Rides.objects.get(id=ride_id)

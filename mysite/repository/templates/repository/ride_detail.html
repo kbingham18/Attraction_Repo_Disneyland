@@ -29,6 +29,13 @@
         <a href="{% url 'repository:create_review' ride.id %}" class="btn btn-info" style="float: right">Add Review</a>
         {% endif %}
             <h3>Reviews</h3>
+        {% if avgRate == 1 %}
+           <h5 class="avgRate">Average Rating: {{ avgRate }} star</h5>
+        {% elif avgRate == 0 %}
+            <h5 class="avgRate">Average Rating: No Reviews</h5>
+        {% else %}
+            <h5 class="avgRate">Average Rating: {{ avgRate }} stars</h5>
+        {% endif %}
             <div class="reviewStartDiv">
                 {%  for review in reviews %}
                     <div class="reviewLine">

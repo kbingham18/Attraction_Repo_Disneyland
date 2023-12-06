@@ -126,3 +126,8 @@ body{
     box-shadow: 2px 2px 5px grey;
     background-color: whitesmoke;
 }
+
+.avgRate{
+    color: dimgrey;
+    padding-left: 16px;
+}
