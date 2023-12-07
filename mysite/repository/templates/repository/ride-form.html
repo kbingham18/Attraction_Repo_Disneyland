@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form id="rideForm" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% for field in form %}
                             <div class="form-group">
@@ -21,11 +21,31 @@
                             {{ field }}
                             </div>
                         {% endfor %}
+
                         <button type="submit" class="btn-info">Save</button>
                     </form>
+                <br>
+                    {% if form.errors %}
+                        <div>
+                        {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            {% if error == "A ride with this name already exits" %}
+                                <p class="errorMessage">A ride with this name already exits, please enter new ride name</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             </div>
         </div>
+
     </div>
+
+{#    <script>#}
+{#        document.getElementById("rideForm").addEventListener("submit", function (){#}
+{#            document.getElementById("errors").style.display = "block";#}
+{#        });#}
+{#    </script>#}
 {% endblock %}

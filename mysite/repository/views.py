@@ -11,6 +11,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+
 def ride_list(request):
     ride_object = Rides.objects.all().order_by('ride_name')
     ride_name = request.GET.get('ride_name')
@@ -19,7 +20,7 @@ def ride_list(request):
         ride_object = ride_object.filter(ride_name__icontains=ride_name)
     elif ride_location != '' and ride_location is not None:
         ride_object = ride_object.filter(ride_location__icontains=ride_location)
-    paginator = Paginator(ride_object, 10)
+    paginator = Paginator(ride_object, 15)
     page = request.GET.get('page')
     ride_object = paginator.get_page(page)
     return render(request, 'repository/ride_list.html', {'ride_object': ride_object})
